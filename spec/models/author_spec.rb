@@ -16,4 +16,13 @@ RSpec.describe Author, type: :model do
   it "fullname method works properly" do
     expect(author.name).to eq("Alan Turing")
   end
+
+  it "validation should fail when lastname is empty" do
+    author = Author.new(
+      first_name: "Alan",
+      last_name: "",
+      homepage: "http://wikipedia.org/Alan_Turing"
+    )
+    expect(author).to_not be_valid
+  end
 end
