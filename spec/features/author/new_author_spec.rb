@@ -21,4 +21,10 @@ describe "New author page", type: :feature do
     page.fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
     find('input[type="submit"]').click
   end
+
+  it "should show an error message when last_name is missing" do
+    visit new_author_path
+    find('input[type="submit"]').click
+    expect(page).to have_text('error')
+  end
 end
