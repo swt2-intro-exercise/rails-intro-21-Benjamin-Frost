@@ -1,0 +1,43 @@
+<%= form_with(model: paper, local: true) do |form| %>
+  <% if paper.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <div id="error_explanation">
+        <h4><%= pluralize(paper.errors.count, "error") %> prohibited this paper from being saved:</h4>
+
+        <ul>
+          <% paper.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :venue, class: 'form-label' %>
+    <%= form.text_field :venue, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :year, class: 'form-label' %>
+    <%= form.number_field :year, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :author_ids, class: 'form-label' %>
+    <%= form.select 'author_ids',
+      options_from_collection_for_select(Author.all, :id, :name, paper.author_ids),
+      {},
+      multiple: true, size: 10, class: 'form-control'
+    %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

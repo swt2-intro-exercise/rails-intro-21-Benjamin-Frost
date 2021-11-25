@@ -1,0 +1,37 @@
+<% unless notice.nil? %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="row my-4 py-3">
+  <div class="col">
+    <h1>Authors</h1>
+  </div>
+  <div class="col-auto">
+    <%= link_to 'New Author', new_author_path, class: "btn btn-success" %>
+  </div>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Homepage</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @authors.each do |author| %>
+      <tr>
+        <td><%= author.name %></td>
+        <td><%= author.homepage %></td>
+        <td>
+          <%= link_to 'Show', author, class: "btn btn-sm btn-primary" %>
+          <%= link_to 'Edit', edit_author_path(author), class: "btn btn-sm btn-warning" %>
+          <%= link_to 'Delete', author, method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

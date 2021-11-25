@@ -1,0 +1,39 @@
+<% unless notice.nil? %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="row my-4 py-3">
+  <div class="col">
+    <h1>Papers</h1>
+  </div>
+  <div class="col-auto">
+    <%= link_to 'New Paper', new_paper_path, class: "btn btn-success" %>
+  </div>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Venue</th>
+      <th scope="col">Year</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @papers.each do |paper| %>
+      <tr>
+        <td><%= paper.title %></td>
+        <td><%= paper.venue %></td>
+        <td><%= paper.year %></td>
+        <td>
+          <%= link_to 'Show', paper, class: "btn btn-sm btn-primary" %>
+          <%= link_to 'Edit', edit_paper_path(paper), class: "btn btn-sm btn-warning" %>
+          <%= link_to 'Delete', paper, method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
