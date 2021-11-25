@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
 
 <p>
   <strong>Title:</strong>
@@ -23,6 +27,8 @@
     <% end %>
   </ul>
 </p>
+
+<hr class="my-4" />
 
 <%= link_to 'Back', papers_path, class: 'btn btn-light' %>
 <%= link_to 'Edit', edit_paper_path(@paper), class: 'btn btn-warning' %>
