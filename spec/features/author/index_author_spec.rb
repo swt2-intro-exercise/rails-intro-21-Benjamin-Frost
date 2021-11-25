@@ -23,6 +23,15 @@ describe "Index author page", type: :feature do
   it "should contain a link to delete an author" do
     @alan = FactoryBot.create :author
     visit authors_path
-    expect(page).to have_link 'Delete', href: delete_author_path(@alan)
+    expect(page).to have_link 'Delete', href: author_path(@alan)
+  end
+
+  it "delete link should delete an author" do
+    @alan = FactoryBot.create :author
+    visit authors_path
+    @count = Author.count
+
+    click_link 'Delete'
+    expect(Author.count).to eq(@count - 1)
   end
 end
