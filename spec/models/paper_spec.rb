@@ -36,8 +36,8 @@ RSpec.describe Paper, type: :model do
   end
 
   it "should be able to filter papers by a certain year" do
-    paper1 = Paper.new(title: 'Paper 1', venue: "Venue 1", year: 2001)
-    paper2 = Paper.new(title: 'Paper 2', venue: "Venue 2", year: 2002)
+    paper1 = Paper.create(title: 'Paper 1', venue: "Venue 1", year: 2001)
+    paper2 = Paper.create(title: 'Paper 2', venue: "Venue 2", year: 2002)
     expect(Paper.count).to eq(2)
 
     filtered_list = Paper.published_in(paper1.year)
