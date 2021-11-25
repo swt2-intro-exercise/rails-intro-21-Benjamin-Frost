@@ -1,38 +1,11 @@
-<h1>New Author</h1>
+<div class="row my-4 py-3">
+  <div class="col">
+    <h1>New Author</h1>
+  </div>
+</div>
 
-<%= form_with scope: :author, url: authors_path, local: true do |form| %>
+<%= render 'form', author: @author %>
 
-  <% if @author.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:
-      </h2>
-      <ul>
-        <% @author.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<hr class="my-4" />
 
-  <p>
-    <%= form.label :first_name %><br>
-    <%= form.text_field :first_name %>
-  </p>
- 
-  <p>
-    <%= form.label :last_name %><br>
-    <%= form.text_field :last_name %>
-  </p>
-
-  <p>
-    <%= form.label :homepage %><br>
-    <%= form.text_field :homepage %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', authors_path %>
+<%= link_to 'Back', authors_path, class: 'btn btn-light' %>
